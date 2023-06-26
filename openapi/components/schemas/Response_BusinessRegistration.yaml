@@ -1,0 +1,5 @@
+description: Representation of business registration response.
+type: object
+properties:
+  result:
+    $ref: ./result.yaml

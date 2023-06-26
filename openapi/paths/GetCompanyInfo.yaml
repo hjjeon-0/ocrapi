@@ -1,0 +1,39 @@
+post:
+  summary: GetCompanyInfo
+  tags:
+    - 기업정보조회
+  description: 사업자등록번호로 기업정보와 기업의 상태 조회
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            comp_info:
+              comp_nm: 사단법인 한국금형산업진흥회
+              type: 그 외 기타 협회 및 단체
+              product: ''
+              tel: 062-945-2216
+              fax: 062-945-2218
+              comp_size: 기타
+              open_date: '2013-08-01'
+              website: ''
+              e-mail: ''
+              represantative: 박상오
+              comp_num: 410-82-13426
+              corp_num: 204221-0001963
+              zip_code: 62419
+              address: 광주광역시 광산구 평동산단로143번길 52광주광역시 광산구 월전동 944
+            comp_state:
+              comp_stt: 계속사업자
+              close_date: ''
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Response_GetCompanyInfo.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Request_Body_GetCompanyInfo.yaml

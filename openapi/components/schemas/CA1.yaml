@@ -1,0 +1,9 @@
+description: 금형 표준어 상위 카테고리 정보
+type: object
+properties:
+  category1_cd:
+    description: 상위 카테고리 식별자
+    type: string
+  category1_nm:
+    description: 상위 카테고리명
+    type: string

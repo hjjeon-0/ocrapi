@@ -1,0 +1,5 @@
+description: Representation of similar words information response.
+type: object
+properties:
+  SimilarWordsInfo:
+    $ref: ./SimilarWordsInfo.yaml

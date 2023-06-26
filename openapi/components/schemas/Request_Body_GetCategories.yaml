@@ -1,0 +1,12 @@
+description: Get Categories of Standard Words
+required:
+  - view_CA1
+  - view_CA2
+type: object
+properties:
+  view_CA1:
+    type: boolean
+    default: true
+  view_CA2:
+    type: boolean
+    default: true

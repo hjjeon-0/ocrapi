@@ -1,0 +1,10 @@
+description: 기업 상태
+type: object
+properties:
+  comp_stt:
+    description: 사업자상태
+    type: string
+  close_date:
+    description: 폐업일자
+    type: string
+    nullable: true

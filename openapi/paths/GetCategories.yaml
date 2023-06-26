@@ -1,0 +1,26 @@
+post:
+  summary: GetCategories
+  tags:
+    - 표준어/유사어 조회
+  description: 금형 표준어 카테고리 목록 출력
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            input_file: 한국금형산업진흥회_사업자등록증.pdf
+            result:
+              comp_num: 410-82-13426
+              comp_nm: (사)한국금형산업진흥회
+              representative: 박화석
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Response_GetCategories.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Request_Body_GetCategories.yaml

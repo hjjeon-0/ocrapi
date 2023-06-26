@@ -1,0 +1,9 @@
+description: 금형 표준어 하위 카테고리 정보
+type: object
+properties:
+  category2_cd:
+    description: 하위 카테고리 식별자
+    type: string
+  category2_nm:
+    description: 하위 카테고리명
+    type: string

@@ -1,0 +1,30 @@
+post:
+  summary: BusinessRegistrationOCR
+  tags:
+    - 사업자등록증 OCR
+  description: 사업자등록증 이미지(PDF, PNG, JPG)에서 사업자 정보 텍스트를 추출하는 기능 API
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            input_file: 한국금형산업진흥회_사업자등록증.pdf
+            result:
+              comp_num: 410-82-13426
+              comp_nm: (사)한국금형산업진흥회
+              representative: 박화석
+              corp_num: 204221-0001963
+              open_date: 2013년08월01일
+              address: 광주광역시광산구평동산단로143번길52
+              publish_date: 2020년03월23일
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Response_BusinessRegistration.yaml
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          $ref: ../components/schemas/Request_Body_BusinessRegistration.yaml

@@ -1,0 +1,7 @@
+description: 금형 표준어 카테고리 정보
+type: object
+properties:
+  CA1:
+    $ref: ./CA1.yaml
+  CA2:
+    $ref: ./CA2.yaml

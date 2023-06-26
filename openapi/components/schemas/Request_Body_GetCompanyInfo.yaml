@@ -1,0 +1,7 @@
+description: Get CompanyInfo
+required:
+  - comp_num
+type: object
+properties:
+  comp_num:
+    type: string

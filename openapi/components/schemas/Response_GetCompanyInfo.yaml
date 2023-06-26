@@ -1,0 +1,7 @@
+description: Respresentation of company information response.
+type: object
+properties:
+  comp_info:
+    $ref: ./comp_info.yaml
+  comp_state:
+    $ref: ./comp_state.yaml

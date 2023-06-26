@@ -1,0 +1,5 @@
+description: Representation of standard words information response.
+type: object
+properties:
+  StandardWordsInfo:
+    $ref: ./StandardWordsInfo.yaml

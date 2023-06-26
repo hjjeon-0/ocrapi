@@ -1,0 +1,5 @@
+description: Respresentation of category information response.
+type: object
+properties:
+  CategoryInfo:
+    $ref: ./CategoryInfo.yaml

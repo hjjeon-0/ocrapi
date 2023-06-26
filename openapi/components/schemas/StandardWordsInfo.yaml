@@ -1,0 +1,16 @@
+description: 표준어 목록 정보
+type: object
+properties:
+  Top_Category:
+    description: 사용자 입력 표준어 상위 카테고리
+    type: string
+  Sub_Category:
+    description: 사용자 입력 표준어 하위 카테고리
+    type: string
+  Total_num_StandardWords:
+    description: 입력 카테고리에 해당하는 표준어 개수
+    type: integer
+    format: int32
+  StandardWordsList:
+    description: 입력 카테고리에 해당하는 표준어 리스트
+    type: array

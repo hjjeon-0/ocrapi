@@ -1,0 +1,14 @@
+description: 입력 표준어에 해당하는 유사어 정보
+type: object
+properties:
+  standard_mold_word:
+    description: 사용자 입력 표준어
+    type: string
+  num_of_similar_words:
+    description: 입력 표준어에 해당하는 유사어 개수
+    type: integer
+    format: int32
+  similar_mold_words:
+    description: 입력 표준어에 해당하는 유사어 리스트
+    type: array
+    nullable: true

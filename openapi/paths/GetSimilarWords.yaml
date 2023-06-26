@@ -1,0 +1,27 @@
+post:
+  summary: GetSimilarWords
+  tags:
+    - 표준어/유사어 조회
+  description: 금형 표준어에 따른 유사어 반환
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      content:
+        application/json:
+          example:
+            SimilarWordsInfo:
+              standard_mold_word: 지그
+              num_of_similar_words: 2
+              similar_mold_words:
+                - IMD
+                - 공구
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Response_GetSimilarWordsInfo.yaml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Request_Body_GetSimilarWords.yaml

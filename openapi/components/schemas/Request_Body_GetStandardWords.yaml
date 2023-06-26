@@ -1,0 +1,15 @@
+description: Get Information of Standard Words
+type: object
+properties:
+  category_1:
+    type: string
+    default: ''
+    nullable: true
+  category_2:
+    type: string
+    default: ''
+    nullable: true
+  is_KOR:
+    type: boolean
+    default: true
+    nullable: true

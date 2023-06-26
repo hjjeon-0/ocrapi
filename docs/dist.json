@@ -1,0 +1,589 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "MoldON API V1",
+    "version": "1.0.0",
+    "description": "Moldon API\n- 1. 사업자등록증 OCR\n- 2. 거래처 조회\n- 3. 표준어 카테고리 목록\n- 4. 표준어 목록\n- 5. 유사어 조회\n- ※ 출처: __ "
+  },
+  "servers": [
+    {
+      "url": "http://ec2-52-79-123-200.ap-northeast-2.compute.amazonaws.com:8090/v1",
+      "description": "Production server"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/BusinessRegistrationOCR": {
+      "post": {
+        "summary": "BusinessRegistrationOCR",
+        "tags": [
+          "사업자등록증 OCR"
+        ],
+        "description": "사업자등록증 이미지(PDF, PNG, JPG)에서 사업자 정보 텍스트를 추출하는 기능 API",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "content": {
+              "application/json": {
+                "example": {
+                  "input_file": "한국금형산업진흥회_사업자등록증.pdf",
+                  "result": {
+                    "comp_num": "410-82-13426",
+                    "comp_nm": "(사)한국금형산업진흥회",
+                    "representative": "박화석",
+                    "corp_num": "204221-0001963",
+                    "open_date": "2013년08월01일",
+                    "address": "광주광역시광산구평동산단로143번길52",
+                    "publish_date": "2020년03월23일"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Response_BusinessRegistration"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Request_Body_BusinessRegistration"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GetCompanyInfo": {
+      "post": {
+        "summary": "GetCompanyInfo",
+        "tags": [
+          "기업정보조회"
+        ],
+        "description": "사업자등록번호로 기업정보와 기업의 상태 조회",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "content": {
+              "application/json": {
+                "example": {
+                  "comp_info": {
+                    "comp_nm": "사단법인 한국금형산업진흥회",
+                    "type": "그 외 기타 협회 및 단체",
+                    "product": "",
+                    "tel": "062-945-2216",
+                    "fax": "062-945-2218",
+                    "comp_size": "기타",
+                    "open_date": "2013-08-01",
+                    "website": "",
+                    "e-mail": "",
+                    "represantative": "박상오",
+                    "comp_num": "410-82-13426",
+                    "corp_num": "204221-0001963",
+                    "zip_code": 62419,
+                    "address": "광주광역시 광산구 평동산단로143번길 52광주광역시 광산구 월전동 944"
+                  },
+                  "comp_state": {
+                    "comp_stt": "계속사업자",
+                    "close_date": ""
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Response_GetCompanyInfo"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request_Body_GetCompanyInfo"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GetCategories": {
+      "post": {
+        "summary": "GetCategories",
+        "tags": [
+          "표준어/유사어 조회"
+        ],
+        "description": "금형 표준어 카테고리 목록 출력",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "content": {
+              "application/json": {
+                "example": {
+                  "input_file": "한국금형산업진흥회_사업자등록증.pdf",
+                  "result": {
+                    "comp_num": "410-82-13426",
+                    "comp_nm": "(사)한국금형산업진흥회",
+                    "representative": "박화석"
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Response_GetCategories"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request_Body_GetCategories"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GetStandardWords": {
+      "post": {
+        "summary": "GetStandardWords",
+        "tags": [
+          "표준어/유사어 조회"
+        ],
+        "description": "금형 표준어 목록 조회",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "content": {
+              "application/json": {
+                "example": {
+                  "StandardWordsInfo": {
+                    "Top_Category": "CA101",
+                    "Sub_Category": "CA201",
+                    "Total_num_StandardWords": 10,
+                    "StandardWordsList": [
+                      "캐버티",
+                      "코어",
+                      "아이 볼트",
+                      "(다름질 가공한)평판",
+                      "(다듬질 가공한)원형판",
+                      "인서트",
+                      "패드",
+                      "금형 표준 부품",
+                      "테이퍼 맞춤핀",
+                      "냉각수관 이음쇠"
+                    ]
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Response_GetStdWordsInfo"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request_Body_GetStandardWords"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/GetSimilarWords": {
+      "post": {
+        "summary": "GetSimilarWords",
+        "tags": [
+          "표준어/유사어 조회"
+        ],
+        "description": "금형 표준어에 따른 유사어 반환",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "content": {
+              "application/json": {
+                "example": {
+                  "SimilarWordsInfo": {
+                    "standard_mold_word": "지그",
+                    "num_of_similar_words": 2,
+                    "similar_mold_words": [
+                      "IMD",
+                      "공구"
+                    ]
+                  }
+                },
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Response_GetSimilarWordsInfo"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Request_Body_GetSimilarWords"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "type": "apiKey",
+        "name": "api-key",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "Request_Body_BusinessRegistration": {
+        "description": "BusinessRegistration File UPLOAD",
+        "required": [
+          "file"
+        ],
+        "type": "object",
+        "properties": {
+          "file": {
+            "title": "File",
+            "type": "string",
+            "format": "binary"
+          }
+        }
+      },
+      "result": {
+        "description": "사업자 등록증 이미지에서 추출한 텍스트 정보",
+        "type": "object",
+        "properties": {
+          "comp_num": {
+            "description": "사업자 등록번호",
+            "type": "string"
+          },
+          "comp_nm": {
+            "description": "법인명(단체명)",
+            "type": "string"
+          },
+          "representative": {
+            "description": "대표자",
+            "type": "string"
+          },
+          "corp_num": {
+            "description": "법인등록번호",
+            "type": "string"
+          },
+          "address": {
+            "description": "사업장 소재지",
+            "type": "string"
+          },
+          "publish_date": {
+            "description": "사업자등록증 발행일",
+            "type": "string"
+          }
+        }
+      },
+      "Response_BusinessRegistration": {
+        "description": "Representation of business registration response.",
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/result"
+          }
+        }
+      },
+      "Request_Body_GetCompanyInfo": {
+        "description": "Get CompanyInfo",
+        "required": [
+          "comp_num"
+        ],
+        "type": "object",
+        "properties": {
+          "comp_num": {
+            "type": "string"
+          }
+        }
+      },
+      "comp_info": {
+        "description": "기업 상세 정보",
+        "type": "object",
+        "properties": {
+          "comp_nm": {
+            "description": "법인명",
+            "type": "string"
+          },
+          "type": {
+            "description": "종목",
+            "type": "string"
+          },
+          "product": {
+            "description": "주요제품",
+            "type": "string",
+            "nullable": true
+          },
+          "tel": {
+            "description": "전화번호",
+            "type": "string"
+          },
+          "fax": {
+            "description": "팩스번호",
+            "type": "string"
+          },
+          "comp_size": {
+            "description": "기업규모",
+            "type": "string"
+          },
+          "oepn_date": {
+            "description": "설립일(신고일)",
+            "type": "string"
+          },
+          "website": {
+            "description": "홈페이지",
+            "type": "string",
+            "nullable": true
+          },
+          "e-mail": {
+            "description": "회사이메일",
+            "type": "string",
+            "nullable": true
+          },
+          "representative": {
+            "description": "대표자명",
+            "type": "string"
+          },
+          "comp_num": {
+            "description": "사업자등록번호",
+            "type": "string"
+          },
+          "corp_num": {
+            "description": "법인등록번호",
+            "type": "string"
+          },
+          "zip_code": {
+            "description": "우편번호",
+            "type": "string"
+          },
+          "address": {
+            "description": "회사주소",
+            "type": "string"
+          }
+        }
+      },
+      "comp_state": {
+        "description": "기업 상태",
+        "type": "object",
+        "properties": {
+          "comp_stt": {
+            "description": "사업자상태",
+            "type": "string"
+          },
+          "close_date": {
+            "description": "폐업일자",
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Response_GetCompanyInfo": {
+        "description": "Respresentation of company information response.",
+        "type": "object",
+        "properties": {
+          "comp_info": {
+            "$ref": "#/components/schemas/comp_info"
+          },
+          "comp_state": {
+            "$ref": "#/components/schemas/comp_state"
+          }
+        }
+      },
+      "Request_Body_GetCategories": {
+        "description": "Get Categories of Standard Words",
+        "required": [
+          "view_CA1",
+          "view_CA2"
+        ],
+        "type": "object",
+        "properties": {
+          "view_CA1": {
+            "type": "boolean",
+            "default": true
+          },
+          "view_CA2": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "CA1": {
+        "description": "금형 표준어 상위 카테고리 정보",
+        "type": "object",
+        "properties": {
+          "category1_cd": {
+            "description": "상위 카테고리 식별자",
+            "type": "string"
+          },
+          "category1_nm": {
+            "description": "상위 카테고리명",
+            "type": "string"
+          }
+        }
+      },
+      "CA2": {
+        "description": "금형 표준어 하위 카테고리 정보",
+        "type": "object",
+        "properties": {
+          "category2_cd": {
+            "description": "하위 카테고리 식별자",
+            "type": "string"
+          },
+          "category2_nm": {
+            "description": "하위 카테고리명",
+            "type": "string"
+          }
+        }
+      },
+      "CategoryInfo": {
+        "description": "금형 표준어 카테고리 정보",
+        "type": "object",
+        "properties": {
+          "CA1": {
+            "$ref": "#/components/schemas/CA1"
+          },
+          "CA2": {
+            "$ref": "#/components/schemas/CA2"
+          }
+        }
+      },
+      "Response_GetCategories": {
+        "description": "Respresentation of category information response.",
+        "type": "object",
+        "properties": {
+          "CategoryInfo": {
+            "$ref": "#/components/schemas/CategoryInfo"
+          }
+        }
+      },
+      "Request_Body_GetStandardWords": {
+        "description": "Get Information of Standard Words",
+        "type": "object",
+        "properties": {
+          "category_1": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "category_2": {
+            "type": "string",
+            "default": "",
+            "nullable": true
+          },
+          "is_KOR": {
+            "type": "boolean",
+            "default": true,
+            "nullable": true
+          }
+        }
+      },
+      "StandardWordsInfo": {
+        "description": "표준어 목록 정보",
+        "type": "object",
+        "properties": {
+          "Top_Category": {
+            "description": "사용자 입력 표준어 상위 카테고리",
+            "type": "string"
+          },
+          "Sub_Category": {
+            "description": "사용자 입력 표준어 하위 카테고리",
+            "type": "string"
+          },
+          "Total_num_StandardWords": {
+            "description": "입력 카테고리에 해당하는 표준어 개수",
+            "type": "integer",
+            "format": "int32"
+          },
+          "StandardWordsList": {
+            "description": "입력 카테고리에 해당하는 표준어 리스트",
+            "type": "array"
+          }
+        }
+      },
+      "Response_GetStdWordsInfo": {
+        "description": "Representation of standard words information response.",
+        "type": "object",
+        "properties": {
+          "StandardWordsInfo": {
+            "$ref": "#/components/schemas/StandardWordsInfo"
+          }
+        }
+      },
+      "Request_Body_GetSimilarWords": {
+        "description": "Get Information of Similar Words",
+        "required": [
+          "StandardWord"
+        ],
+        "type": "object",
+        "properties": {
+          "StandardWord": {
+            "type": "string",
+            "default": "",
+            "nullable": false
+          }
+        }
+      },
+      "SimilarWordsInfo": {
+        "description": "입력 표준어에 해당하는 유사어 정보",
+        "type": "object",
+        "properties": {
+          "standard_mold_word": {
+            "description": "사용자 입력 표준어",
+            "type": "string"
+          },
+          "num_of_similar_words": {
+            "description": "입력 표준어에 해당하는 유사어 개수",
+            "type": "integer",
+            "format": "int32"
+          },
+          "similar_mold_words": {
+            "description": "입력 표준어에 해당하는 유사어 리스트",
+            "type": "array",
+            "nullable": true
+          }
+        }
+      },
+      "Response_GetSimilarWordsInfo": {
+        "description": "Representation of similar words information response.",
+        "type": "object",
+        "properties": {
+          "SimilarWordsInfo": {
+            "$ref": "#/components/schemas/SimilarWordsInfo"
+          }
+        }
+      }
+    }
+  }
+}

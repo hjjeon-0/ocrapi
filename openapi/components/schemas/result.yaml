@@ -1,0 +1,21 @@
+description: 사업자 등록증 이미지에서 추출한 텍스트 정보
+type: object
+properties:
+  comp_num:
+    description: 사업자 등록번호
+    type: string
+  comp_nm:
+    description: 법인명(단체명)
+    type: string
+  representative:
+    description: 대표자
+    type: string
+  corp_num:
+    description: 법인등록번호
+    type: string
+  address:
+    description: 사업장 소재지
+    type: string
+  publish_date:
+    description: 사업자등록증 발행일
+    type: string

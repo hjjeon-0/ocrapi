@@ -1,0 +1,9 @@
+description: Get Information of Similar Words
+required:
+  - StandardWord
+type: object
+properties:
+  StandardWord:
+    type: string
+    default: ''
+    nullable: false

@@ -1,0 +1,48 @@
+description: 기업 상세 정보
+type: object
+properties:
+  comp_nm:
+    description: 법인명
+    type: string
+  type:
+    description: 종목
+    type: string
+  product:
+    description: 주요제품
+    type: string
+    nullable: true
+  tel:
+    description: 전화번호
+    type: string
+  fax:
+    description: 팩스번호
+    type: string
+  comp_size:
+    description: 기업규모
+    type: string
+  oepn_date:
+    description: 설립일(신고일)
+    type: string
+  website:
+    description: 홈페이지
+    type: string
+    nullable: true
+  e-mail:
+    description: 회사이메일
+    type: string
+    nullable: true
+  representative:
+    description: 대표자명
+    type: string
+  comp_num:
+    description: 사업자등록번호
+    type: string
+  corp_num:
+    description: 법인등록번호
+    type: string
+  zip_code:
+    description: 우편번호
+    type: string
+  address:
+    description: 회사주소
+    type: string
