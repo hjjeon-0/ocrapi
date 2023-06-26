@@ -9,7 +9,7 @@ info:
     - 3. 표준어 카테고리 목록
     - 4. 표준어 목록
     - 5. 유사어 조회
-    - ※ 출처: __ 
+    - ※ 출처: 변경된 경우의 git page 업데이트 여부를 확인. 이 문구가 보이면, 업데이트가 잘 되는 것임. 
 servers:
   - url: http://ec2-52-79-123-200.ap-northeast-2.compute.amazonaws.com:8090/v1
     description: Production server
