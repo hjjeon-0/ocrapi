@@ -2,6 +2,10 @@ openapi: 3.0.2
 info:
   title: MoldON API V1
   version: 1.0.0
+  x-logo: 
+    url: 'https://hjjeon-0.github.io/ocrapi/moldon_logo.png'
+    altText: A Logo image of MoldON
+
   description: |-
     Moldon API
     - 1. 사업자등록증 OCR
